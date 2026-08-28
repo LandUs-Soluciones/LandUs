@@ -41,9 +41,9 @@ export const landingPageType = defineType({
       defineField({name: 'title', title: 'Titular', type: 'string', validation: (Rule) => Rule.required()}),
       defineField({name: 'accent', title: 'Frase destacada', type: 'string', validation: (Rule) => Rule.required()}),
       defineField({name: 'text', title: 'Explicación', type: 'text', rows: 4, validation: (Rule) => Rule.required()}),
-      defineField({name: 'client', title: 'Cliente', type: 'string', validation: (Rule) => Rule.required()}),
+      defineField({name: 'context', title: 'Para quién', type: 'string', validation: (Rule) => Rule.required()}),
       defineField({name: 'objective', title: 'Objetivo', type: 'string', validation: (Rule) => Rule.required()}),
-      defineField({name: 'action', title: 'Acción principal', type: 'string', validation: (Rule) => Rule.required()}),
+      defineField({name: 'actions', title: 'Acciones posibles', description: 'Ejemplos de acciones que una landing puede conseguir.', type: 'array', validation: (Rule) => Rule.min(2).max(4), of: [defineArrayMember({type: 'object', fields: [defineField({name: 'label', title: 'Acción', type: 'string', validation: (Rule) => Rule.required()})], preview: {select: {title: 'label'}}})]}),
     ]),
     defineField({
       name: 'offer', title: '5. Qué incluye una landing', description: 'Las partes del único producto de LandUs, no una lista de servicios genéricos.', type: 'array', validation: (Rule) => Rule.min(3).max(6),

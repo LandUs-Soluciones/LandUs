@@ -5,7 +5,6 @@ import {
   Check,
   ChevronDown,
   Menu,
-  MessageCircle,
   X,
 } from 'lucide-react'
 import {getLandingContent} from './lib/sanity'
@@ -34,13 +33,13 @@ const fallbackContent = {
     {_key: 'client', number: '04', label: 'CLIENTE', title: 'Se convierte en oportunidad', text: 'Tu página deja de ser una vitrina y empieza a trabajar para tu negocio.'},
   ],
   caseStudy: {
-    eyebrow: 'UN CASO, UNA ACCIÓN',
-    title: 'Para una clínica dental, la meta no es “más visitas”.',
-    accent: 'Es conseguir más evaluaciones.',
-    text: 'La landing organiza tratamiento, confianza y prueba social para que el clic termine en una conversación por WhatsApp.',
-    client: 'CLÍNICA DENTAL',
-    objective: 'CONSEGUIR CITAS',
-    action: 'RESERVAR POR WHATSAPP',
+    eyebrow: 'UNA PÁGINA, UNA DIRECCIÓN',
+    title: 'Una landing no persigue visitas.',
+    accent: 'Persigue una acción.',
+    text: 'La acción cambia con tu negocio. La página se diseña para que el siguiente paso sea evidente y fácil de tomar.',
+    context: 'EMPRENDIMIENTOS Y NEGOCIOS',
+    objective: 'GUIAR A UNA RESPUESTA',
+    actions: [{_key: 'quote', label: 'Cotizar'}, {_key: 'book', label: 'Reservar'}, {_key: 'message', label: 'Escribir'}, {_key: 'buy', label: 'Comprar'}],
   },
   offer: [
     {_key: 'strategy', number: '01', title: 'Estrategia', text: 'Definimos qué debe hacer la página y para quién.'},
@@ -69,7 +68,7 @@ function mergeContent(remote) {
     ...remote,
     hero: {...fallbackContent.hero, ...remote.hero},
     problem: {...fallbackContent.problem, ...remote.problem},
-    caseStudy: {...fallbackContent.caseStudy, ...remote.caseStudy},
+    caseStudy: {...fallbackContent.caseStudy, ...remote.caseStudy, actions: remote.caseStudy?.actions?.length ? remote.caseStudy.actions : fallbackContent.caseStudy.actions},
     finalCta: {...fallbackContent.finalCta, ...remote.finalCta},
     route: remote.route?.length ? remote.route : fallbackContent.route,
     offer: remote.offer?.length ? remote.offer : fallbackContent.offer,
@@ -127,21 +126,20 @@ function App() {
             </div>
           </div>
 
-          <div className="hero-demo" aria-label="Ejemplo de una landing diseñada para conseguir evaluaciones">
+          <div className="hero-demo" aria-label="Vista previa de una landing diseñada para guiar a la acción">
             <RouteLine className="hero-route" />
             <div className="browser-frame">
-              <div className="browser-top"><div><i></i><i></i><i></i></div><span>clinica-dental.pe</span><b>↗</b></div>
-              <div className="dental-page">
-                <div className="dental-nav"><span>SONRISA</span><small>Especialidades&nbsp;&nbsp;&nbsp; Nosotros</small></div>
-                <div className="dental-content"><p>ODONTOLOGÍA EN LIMA</p><h2>Tu sonrisa merece<br />un plan claro.</h2><span>Agenda una evaluación y conversemos sobre tu tratamiento.</span><button>Reservar evaluación <ArrowRight size={14} /></button></div>
-                <div className="dental-proof"><span>+200</span><p>pacientes atendidos<br />este año</p><i></i></div>
+              <div className="browser-top"><div><i></i><i></i><i></i></div><span>tu-negocio.pe</span><b>↗</b></div>
+              <div className="preview-page">
+                <div className="preview-nav"><span>TU MARCA</span><small>Servicios&nbsp;&nbsp;&nbsp; Nosotros</small></div>
+                <div className="preview-content"><p>UNA PROPUESTA CLARA</p><h2>Haz que elegirte<br />sea el siguiente paso.</h2><span>Explica tu oferta, reduce dudas y guía a una acción concreta.</span><button>Conocer la solución <ArrowRight size={14} /></button></div>
+                <div className="preview-proof"><span>01</span><p>página<br />un objetivo</p><i></i></div>
               </div>
             </div>
             <div className="hero-note visit-note"><span></span>VISITA</div>
-            <div className="hero-note action-note"><span></span>ACCIÓN</div>
+            <div className="hero-note action-note"><span></span>RESPUESTA</div>
           </div>
-        </div>
-        <div className="hero-strip"><div className="shell"><span>MUCHAS VISITAS</span><i></i><b>UNA DIRECCIÓN CLARA</b><i></i><span>UNA ACCIÓN</span></div></div>
+        </div>        <div className="hero-strip"><div className="shell"><span>MUCHAS VISITAS</span><i></i><b>UNA DIRECCIÓN CLARA</b><i></i><span>UNA ACCIÓN</span></div></div>
       </section>
 
       <section className="problem shell">
@@ -157,11 +155,10 @@ function App() {
 
       <section className="case-section">
         <div className="shell case-grid">
-          <div className="case-copy"><p className="section-kicker dark"><span></span>{content.caseStudy.eyebrow}</p><h2>{content.caseStudy.title} <strong>{content.caseStudy.accent}</strong></h2><p>{content.caseStudy.text}</p><div className="case-facts"><div><span>CLIENTE</span><b>{content.caseStudy.client}</b></div><div><span>OBJETIVO</span><b>{content.caseStudy.objective}</b></div><div><span>ACCIÓN</span><b>{content.caseStudy.action}</b></div></div></div>
-          <div className="case-visual"><div className="ad-chip">CAMPAÑA<br /><b>Ortodoncia invisible</b></div><ArrowRight className="flow-arrow one" size={23} /><div className="phone"><div className="phone-bar"></div><div className="phone-content"><p>SONRISA NORTE</p><h3>Tu sonrisa<br /><strong>también puede<br />avanzar.</strong></h3><span>Conoce el tratamiento que se adapta a ti.</span><button><MessageCircle size={14} /> Reservar por WhatsApp</button></div></div><ArrowRight className="flow-arrow two" size={23} /><div className="result-chip"><span></span><p>ACCIÓN</p><b>Nueva conversación</b></div></div>
+          <div className="case-copy"><p className="section-kicker dark"><span></span>{content.caseStudy.eyebrow}</p><h2>{content.caseStudy.title} <strong>{content.caseStudy.accent}</strong></h2><p>{content.caseStudy.text}</p><div className="case-facts"><div><span>PARA QUIÉN</span><b>{content.caseStudy.context}</b></div><div><span>OBJETIVO</span><b>{content.caseStudy.objective}</b></div></div></div>
+          <div className="action-board" aria-label="Acciones que puede conseguir una landing"><RouteLine /><p>LANDUS / UNA PÁGINA, UNA ACCIÓN</p><h3>¿Qué necesita hacer quien llega?</h3><div className="action-choices">{content.caseStudy.actions.map((item) => <span key={item._key || item.label}><i></i>{item.label}<ArrowRight size={16} /></span>)}</div><b>La acción se adapta a tu negocio. El foco no.</b></div>
         </div>
       </section>
-
       <section className="product shell" id="producto">
         <div className="product-heading"><p className="section-kicker dark"><span></span>EL PRODUCTO LANDUS</p><h2>Una landing.<br /><strong>Un objetivo claro.</strong></h2></div>
         <div className="offer-list">{content.offer.map((item) => <article key={item._key || item.number} className="offer-item"><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p><ArrowUpRight size={19} /></article>)}</div>

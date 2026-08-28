@@ -11,7 +11,7 @@
     {"_key":"action","number":"03","label":"ACCIÓN","title":"Da el siguiente paso","text":"WhatsApp, reserva, cotización o compra: una acción visible y simple."},
     {"_key":"client","number":"04","label":"CLIENTE","title":"Se convierte en oportunidad","text":"Tu página deja de ser una vitrina y empieza a trabajar para tu negocio."}
   ],
-  "caseStudy": {"eyebrow":"UN CASO, UNA ACCIÓN","title":"Para una clínica dental, la meta no es “más visitas”.","accent":"Es conseguir más evaluaciones.","text":"La landing organiza tratamiento, confianza y prueba social para que el clic termine en una conversación por WhatsApp.","client":"CLÍNICA DENTAL","objective":"CONSEGUIR CITAS","action":"RESERVAR POR WHATSAPP"},
+  "caseStudy": {"eyebrow":"UNA PÁGINA, UNA DIRECCIÓN","title":"Una landing no persigue visitas.","accent":"Persigue una acción.","text":"La acción cambia con tu negocio. La página se diseña para que el siguiente paso sea evidente y fácil de tomar.","context":"EMPRENDIMIENTOS Y NEGOCIOS","objective":"GUIAR A UNA RESPUESTA","actions":[{"_key":"quote","label":"Cotizar"},{"_key":"book","label":"Reservar"},{"_key":"message","label":"Escribir"},{"_key":"buy","label":"Comprar"}]},
   "offer": [
     {"_key":"strategy","number":"01","title":"Estrategia","text":"Definimos qué debe hacer la página y para quién."},
     {"_key":"copy","number":"02","title":"Copy","text":"Ordenamos tu oferta para que se entienda rápido."},
