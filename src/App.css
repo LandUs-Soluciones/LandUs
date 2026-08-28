@@ -16,7 +16,7 @@ button { font: inherit; }
 .nav-links { display: flex; align-items: center; gap: 32px; font-size: 14px; font-weight: 600; }.nav-links > a:not(.nav-contact) { opacity: .72; transition: opacity .2s; }.nav-links > a:hover { opacity: 1; }
 .nav-contact { display: flex; align-items: center; gap: 7px; background: #eaff63; color: #161616; padding: 11px 15px; border-radius: 99px; margin-left: 10px; }
 .menu-button { display: none; color: inherit; border: 0; background: none; }
-.hero-section { background: #171716; color: #f7f5ef; min-height: 790px; position: relative; overflow: hidden; padding-top: 155px; }
+.hero-section { background: #171716; color: #f7f5ef; min-height: 790px; position: relative; overflow: hidden; padding: 155px 0 96px; }
 .hero-section:before { content: ''; position: absolute; width: 720px; height: 720px; right: -205px; top: -250px; border: 1px solid #44443f; border-radius: 50%; box-shadow: 0 0 0 90px rgba(255,255,255,.02), 0 0 0 180px rgba(255,255,255,.015); }
 .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 38px; min-height: 570px; position: relative; }
 .eyebrow { display: flex; align-items: center; gap: 9px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .055em; font-size: 10px; font-weight: 500; color: #bdbcb6; margin: 0 0 25px; }.eyebrow span { width: 8px; height: 8px; border-radius: 50%; background: #eaff63; }.eyebrow.dark { color: #5a5a55; }.eyebrow.dark span { background: #1f75ff; }
