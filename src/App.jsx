@@ -98,7 +98,7 @@ function App() {
             <p className="art-caption"><span>Diseño que toma posición</span><span>↓</span></p>
           </div>
         </div>
-        <div className="ticker"><div><span>LANDING PAGES A MEDIDA</span><b>✦</b><span>MARCA, ESTRATEGIA, WEB</span><b>✦</b><span>LANDING PAGES A MEDIDA</span><b>✦</b><span>MARCA, ESTRATEGIA, WEB</span></div></div>
+        <div className="ticker" aria-label="Landing pages a medida, marca, estrategia y web"><div className="ticker-track" aria-hidden="true"><span>LANDING PAGES A MEDIDA</span><b>✦</b><span>MARCA, ESTRATEGIA, WEB</span><b>✦</b><span>LANDING PAGES A MEDIDA</span><b>✦</b><span>MARCA, ESTRATEGIA, WEB</span><b>✦</b></div></div>
       </section>
 
       <section id="servicios" className="services section container">
