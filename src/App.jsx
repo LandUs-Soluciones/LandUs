@@ -1,13 +1,11 @@
 import {useEffect, useState} from 'react'
 import {
+  ArrowRight,
   ArrowUpRight,
   Check,
-  ChevronRight,
-  CirclePlay,
-  Code2,
+  ChevronDown,
   Menu,
-  MoveRight,
-  Sparkles,
+  MessageCircle,
   X,
 } from 'lucide-react'
 import {getLandingContent} from './lib/sanity'
@@ -15,39 +13,81 @@ import './App.css'
 
 const fallbackContent = {
   brand: 'LandUs',
+  contactUrl: 'https://www.instagram.com/landus.solu/',
   hero: {
-    eyebrow: 'Estudio digital para marcas en movimiento',
-    title: 'Una presencia web que hace que tu negocio se sienta',
-    accent: 'imposible de ignorar.',
-    description: 'Creamos landing pages estratégicas y hechas a medida para emprendimientos y negocios que necesitan convertir una buena primera impresión en oportunidades reales.',
-    primaryCta: 'Conversemos sobre tu marca',
-    secondaryCta: 'Ver cómo trabajamos',
+    eyebrow: 'LANDING PAGES PARA NEGOCIOS',
+    title: 'Tu anuncio consiguió el clic.',
+    accent: 'Ahora haz que avance.',
+    description: 'Diseñamos landing pages con una sola dirección: llevar a quien te visita hacia una acción concreta.',
+    primaryCta: 'Quiero mi landing',
+    secondaryCta: 'Conoce la Ruta LandUs',
   },
-  services: [
-    {number: '01', title: 'Estrategia de conversión', text: 'Definimos qué necesita entender tu cliente y ordenamos el mensaje antes de diseñar.'},
-    {number: '02', title: 'Diseño con identidad', text: 'Una interfaz pensada para que la personalidad de tu marca se vea y se recuerde.'},
-    {number: '03', title: 'Desarrollo y publicación', text: 'Una web rápida, adaptable a cualquier pantalla y lista para recibir visitas.'},
+  problem: {
+    eyebrow: 'DESPUÉS DEL CLIC',
+    title: 'El tráfico llega. La pregunta es: ¿qué pasa después?',
+    text: 'Una buena landing elimina dudas, explica la oferta y le da a cada visita un siguiente paso claro.',
+  },
+  route: [
+    {_key: 'visit', number: '01', label: 'VISITA', title: 'Llega desde tu campaña', text: 'Un anuncio, un enlace o una búsqueda trae a la persona correcta.'},
+    {_key: 'interest', number: '02', label: 'INTERÉS', title: 'Entiende por qué elegirte', text: 'La oferta, la prueba y el mensaje aparecen en el orden correcto.'},
+    {_key: 'action', number: '03', label: 'ACCIÓN', title: 'Da el siguiente paso', text: 'WhatsApp, reserva, cotización o compra: una acción visible y simple.'},
+    {_key: 'client', number: '04', label: 'CLIENTE', title: 'Se convierte en oportunidad', text: 'Tu página deja de ser una vitrina y empieza a trabajar para tu negocio.'},
   ],
-  process: [
-    {step: '01', title: 'Entendemos', text: 'Conocemos tu negocio, objetivo y cliente ideal.'},
-    {step: '02', title: 'Construimos', text: 'Diseñamos y desarrollamos una experiencia a tu medida.'},
-    {step: '03', title: 'Lanzamos', text: 'Publicamos, medimos y dejamos tu página lista para crecer.'},
+  caseStudy: {
+    eyebrow: 'UN CASO, UNA ACCIÓN',
+    title: 'Para una clínica dental, la meta no es “más visitas”.',
+    accent: 'Es conseguir más evaluaciones.',
+    text: 'La landing organiza tratamiento, confianza y prueba social para que el clic termine en una conversación por WhatsApp.',
+    client: 'CLÍNICA DENTAL',
+    objective: 'CONSEGUIR CITAS',
+    action: 'RESERVAR POR WHATSAPP',
+  },
+  offer: [
+    {_key: 'strategy', number: '01', title: 'Estrategia', text: 'Definimos qué debe hacer la página y para quién.'},
+    {_key: 'copy', number: '02', title: 'Copy', text: 'Ordenamos tu oferta para que se entienda rápido.'},
+    {_key: 'design', number: '03', title: 'Diseño', text: 'Creamos una interfaz con carácter y foco.'},
+    {_key: 'development', number: '04', title: 'Desarrollo', text: 'La hacemos rápida, responsive y fácil de usar.'},
+    {_key: 'integrations', number: '05', title: 'Integraciones', text: 'Conectamos WhatsApp, formularios y analítica.'},
+    {_key: 'launch', number: '06', title: 'Publicación', text: 'La ponemos online lista para recibir tráfico.'},
   ],
-  team: [
-    {name: 'Jose Pereda', role: 'Estrategia y desarrollo'},
-    {name: 'Renzo Ccente', role: 'Diseño y experiencia'},
+  faq: [
+    {_key: 'faq-1', question: '¿Sirve si todavía no tengo una marca grande?', answer: 'Sí. Una landing ordena tu propuesta y te ayuda a verte claro y confiable desde la primera visita.'},
+    {_key: 'faq-2', question: '¿Pueden conectarla con WhatsApp o un formulario?', answer: 'Sí. Definimos la acción principal y conectamos los canales necesarios para que el contacto llegue a tu negocio.'},
+    {_key: 'faq-3', question: '¿La página será editable?', answer: 'Sí. Dejamos el contenido clave en un CMS simple para que puedas actualizar textos, casos y llamados a la acción.'},
   ],
   finalCta: {
-    title: 'Tu negocio ya tiene algo valioso. Hagamos que se note.',
-    text: 'Cuéntanos qué estás construyendo y veamos si LandUs es el equipo correcto para llevarlo a la web.',
-    button: 'Escríbenos por Instagram',
+    title: 'Haz que tu próxima visita avance.',
+    text: 'Cuéntanos qué acción necesita conseguir tu negocio y diseñemos el camino para llegar a ella.',
+    button: 'Conversemos sobre tu landing',
   },
 }
 
-const link = 'https://www.instagram.com/landus.solu/'
+function mergeContent(remote) {
+  if (!remote) return fallbackContent
+  return {
+    ...fallbackContent,
+    ...remote,
+    hero: {...fallbackContent.hero, ...remote.hero},
+    problem: {...fallbackContent.problem, ...remote.problem},
+    caseStudy: {...fallbackContent.caseStudy, ...remote.caseStudy},
+    finalCta: {...fallbackContent.finalCta, ...remote.finalCta},
+    route: remote.route?.length ? remote.route : fallbackContent.route,
+    offer: remote.offer?.length ? remote.offer : fallbackContent.offer,
+    faq: remote.faq?.length ? remote.faq : fallbackContent.faq,
+  }
+}
 
 function BrandMark() {
   return <span className="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+}
+
+function RouteLine({className = ''}) {
+  return <svg className={`route-line ${className}`} viewBox="0 0 580 180" fill="none" aria-hidden="true">
+    <path d="M8 38h178c70 0 88 104 158 104h142c43 0 56-35 77-67l9-14" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    <circle cx="186" cy="38" r="7" fill="white" stroke="currentColor" strokeWidth="3" />
+    <circle cx="344" cy="142" r="7" fill="white" stroke="currentColor" strokeWidth="3" />
+    <path d="m560 51 18 10-12 16" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
 }
 
 function App() {
@@ -55,76 +95,85 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    getLandingContent().then((remote) => {
-      if (remote) setContent({...fallbackContent, ...remote, hero: {...fallbackContent.hero, ...remote.hero}, finalCta: {...fallbackContent.finalCta, ...remote.finalCta}})
-    }).catch(() => {})
+    getLandingContent().then((remote) => setContent(mergeContent(remote))).catch(() => {})
   }, [])
 
   const closeMenu = () => setMenuOpen(false)
 
   return (
     <main>
-      <header className="nav-shell">
-        <nav className="nav container" aria-label="Navegación principal">
-          <a href="#inicio" className="brand" onClick={closeMenu}><BrandMark /><span>{content.brand}</span></a>
+      <header className="site-header">
+        <nav className="nav shell" aria-label="Navegación principal">
+          <a className="brand" href="#inicio" onClick={closeMenu}><BrandMark /><span>Land<span>Us</span></span></a>
           <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-            <a href="#servicios" onClick={closeMenu}>Servicios</a>
-            <a href="#proceso" onClick={closeMenu}>Proceso</a>
-            <a href="#nosotros" onClick={closeMenu}>Nosotros</a>
-            <a href={link} target="_blank" rel="noreferrer" className="nav-contact" onClick={closeMenu}>Hablemos <ArrowUpRight size={16} /></a>
+            <a href="#ruta" onClick={closeMenu}>La Ruta LandUs</a>
+            <a href="#producto" onClick={closeMenu}>Qué incluye</a>
+            <a href="#preguntas" onClick={closeMenu}>Preguntas</a>
+            <a className="nav-cta" href={content.contactUrl} target="_blank" rel="noreferrer" onClick={closeMenu}>Hablemos <ArrowUpRight size={16} /></a>
           </div>
-          <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}>{menuOpen ? <X /> : <Menu />}</button>
+          <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}>{menuOpen ? <X size={22} /> : <Menu size={22} />}</button>
         </nav>
       </header>
 
-      <section id="inicio" className="hero-section">
-        <div className="container hero-grid">
+      <section className="hero" id="inicio">
+        <div className="shell hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow"><span></span>{content.hero.eyebrow}</p>
-            <h1>{content.hero.title} <em>{content.hero.accent}</em></h1>
-            <p className="hero-description">{content.hero.description}</p>
+            <p className="section-kicker"><span></span>{content.hero.eyebrow}</p>
+            <h1>{content.hero.title} <strong>{content.hero.accent}</strong></h1>
+            <p className="hero-lede">{content.hero.description}</p>
             <div className="hero-actions">
-              <a className="button button-light" href={link} target="_blank" rel="noreferrer">{content.hero.primaryCta}<MoveRight size={18} /></a>
-              <a className="text-link" href="#proceso">{content.hero.secondaryCta}<ChevronRight size={18} /></a>
+              <a className="button primary" href={content.contactUrl} target="_blank" rel="noreferrer">{content.hero.primaryCta}<ArrowRight size={18} /></a>
+              <a className="inline-link" href="#ruta">{content.hero.secondaryCta}<ArrowRight size={16} /></a>
             </div>
           </div>
-          <div className="hero-art" aria-label="Vista previa artística de una landing page de LandUs">
-            <div className="orbit orbit-one"></div><div className="orbit orbit-two"></div>
-            <div className="screen-card">
-              <div className="screen-top"><span>LANDUS / DIGITAL</span><span>01—24</span></div>
-              <div className="screen-title">Make<br />your next<br /><b>move.</b></div>
-              <div className="screen-bottom"><span>BRAND / WEB / MOTION</span><span className="screen-dot"></span></div>
+
+          <div className="hero-demo" aria-label="Ejemplo de una landing diseñada para conseguir evaluaciones">
+            <RouteLine className="hero-route" />
+            <div className="browser-frame">
+              <div className="browser-top"><div><i></i><i></i><i></i></div><span>clinica-dental.pe</span><b>↗</b></div>
+              <div className="dental-page">
+                <div className="dental-nav"><span>SONRISA</span><small>Especialidades&nbsp;&nbsp;&nbsp; Nosotros</small></div>
+                <div className="dental-content"><p>ODONTOLOGÍA EN LIMA</p><h2>Tu sonrisa merece<br />un plan claro.</h2><span>Agenda una evaluación y conversemos sobre tu tratamiento.</span><button>Reservar evaluación <ArrowRight size={14} /></button></div>
+                <div className="dental-proof"><span>+200</span><p>pacientes atendidos<br />este año</p><i></i></div>
+              </div>
             </div>
-            <p className="art-caption"><span>Diseño que toma posición</span><span>↓</span></p>
+            <div className="hero-note visit-note"><span></span>VISITA</div>
+            <div className="hero-note action-note"><span></span>ACCIÓN</div>
           </div>
         </div>
-        <div className="ticker" aria-label="Landing pages a medida, marca, estrategia y web"><div className="ticker-track" aria-hidden="true"><span>LANDING PAGES A MEDIDA</span><b>✦</b><span>MARCA, ESTRATEGIA, WEB</span><b>✦</b><span>LANDING PAGES A MEDIDA</span><b>✦</b><span>MARCA, ESTRATEGIA, WEB</span><b>✦</b></div></div>
+        <div className="hero-strip"><div className="shell"><span>MUCHAS VISITAS</span><i></i><b>UNA DIRECCIÓN CLARA</b><i></i><span>UNA ACCIÓN</span></div></div>
       </section>
 
-      <section id="servicios" className="services section container">
-        <div className="section-intro"><p className="eyebrow dark"><span></span>Lo que hacemos</p><h2>Una landing no es solo una página.<br /><em>Es una oportunidad bien diseñada.</em></h2></div>
-        <div className="service-list">
-          {content.services.map((service) => <article className="service-row" key={service.number}><span className="service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><span className="service-arrow"><ArrowUpRight size={22} /></span></article>)}
+      <section className="problem shell">
+        <div className="problem-intro"><p className="section-kicker dark"><span></span>{content.problem.eyebrow}</p><h2>{content.problem.title}</h2></div>
+        <div className="problem-copy"><p>{content.problem.text}</p><ul><li><Check size={17} /> Menos distracciones</li><li><Check size={17} /> Más claridad</li><li><Check size={17} /> Una acción visible</li></ul></div>
+      </section>
+
+      <section className="route-section" id="ruta">
+        <div className="shell"><div className="route-heading"><p className="section-kicker dark"><span></span>LA RUTA LANDUS</p><h2>Cada visita necesita<br /><strong>un siguiente paso.</strong></h2><p>Diseñamos el recorrido completo: desde el momento en que alguien llega hasta el momento en que decide actuar.</p></div>
+          <div className="route-map"><RouteLine /><div className="route-cards">{content.route.map((item) => <article key={item._key || item.number} className="route-card"><span className="route-number">{item.number}</span><p>{item.label}</p><h3>{item.title}</h3><span>{item.text}</span></article>)}</div></div>
         </div>
       </section>
 
-      <section className="statement"><div className="container"><p>Diseñamos para que tu negocio se vea a la altura de lo que ya hace bien.</p><div className="statement-stamp"><Sparkles size={18} /><span>LANDUS<br />ESTUDIO DIGITAL</span></div></div></section>
-
-      <section id="proceso" className="process section container">
-        <div className="process-head"><div><p className="eyebrow dark"><span></span>Nuestra forma de trabajar</p><h2>Directos al punto.<br />Cerca de tu negocio.</h2></div><a href={link} target="_blank" rel="noreferrer" className="round-link" aria-label="Contactar LandUs"><MoveRight size={25} /></a></div>
-        <div className="steps">{content.process.map((item) => <article className="step" key={item.step}><span>{item.step}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div>
+      <section className="case-section">
+        <div className="shell case-grid">
+          <div className="case-copy"><p className="section-kicker dark"><span></span>{content.caseStudy.eyebrow}</p><h2>{content.caseStudy.title} <strong>{content.caseStudy.accent}</strong></h2><p>{content.caseStudy.text}</p><div className="case-facts"><div><span>CLIENTE</span><b>{content.caseStudy.client}</b></div><div><span>OBJETIVO</span><b>{content.caseStudy.objective}</b></div><div><span>ACCIÓN</span><b>{content.caseStudy.action}</b></div></div></div>
+          <div className="case-visual"><div className="ad-chip">CAMPAÑA<br /><b>Ortodoncia invisible</b></div><ArrowRight className="flow-arrow one" size={23} /><div className="phone"><div className="phone-bar"></div><div className="phone-content"><p>SONRISA NORTE</p><h3>Tu sonrisa<br /><strong>también puede<br />avanzar.</strong></h3><span>Conoce el tratamiento que se adapta a ti.</span><button><MessageCircle size={14} /> Reservar por WhatsApp</button></div></div><ArrowRight className="flow-arrow two" size={23} /><div className="result-chip"><span></span><p>ACCIÓN</p><b>Nueva conversación</b></div></div>
+        </div>
       </section>
 
-      <section className="showcase"><div className="container showcase-grid"><div className="showcase-copy"><p className="eyebrow"><span></span>Una web con intención</p><h2>Claridad para tu cliente. Carácter para tu marca.</h2><p>No entregamos plantillas disfrazadas. Cada página parte de tu negocio, tu público y el siguiente paso que quieres que dé quien te visita.</p><a className="text-link light" href={link} target="_blank" rel="noreferrer">Inicia tu proyecto <ArrowUpRight size={18} /></a></div><div className="project-window"><div className="window-nav"><span></span><span></span><span></span></div><div className="window-content"><p>YOUR BRAND<br />DESERVES A<br /><b>PLACE TO LAND.</b></p><div><span>PROJECT / 2026</span><span>LANDUS</span></div></div></div></div></section>
+      <section className="product shell" id="producto">
+        <div className="product-heading"><p className="section-kicker dark"><span></span>EL PRODUCTO LANDUS</p><h2>Una landing.<br /><strong>Un objetivo claro.</strong></h2></div>
+        <div className="offer-list">{content.offer.map((item) => <article key={item._key || item.number} className="offer-item"><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p><ArrowUpRight size={19} /></article>)}</div>
+      </section>
 
-      <section id="nosotros" className="team section container"><div className="team-title"><p className="eyebrow dark"><span></span>El equipo</p><h2>Dos perfiles,<br /><em>un mismo estándar.</em></h2></div><div className="team-cards">{content.team.map((member, index) => <article className="team-card" key={member.name}><span className="member-index">0{index + 1}</span><div className="member-monogram">{member.name.split(' ').map((part) => part[0]).join('')}</div><h3>{member.name}</h3><p>{member.role}</p></article>)}</div></section>
+      <section className="questions" id="preguntas"><div className="shell questions-grid"><div><p className="section-kicker dark"><span></span>ANTES DE EMPEZAR</p><h2>Las preguntas que aparecen antes de dar el siguiente paso.</h2><a href={content.contactUrl} target="_blank" rel="noreferrer" className="inline-link blue">¿Tienes otra? Escríbenos <ArrowRight size={16} /></a></div><div className="faq-list">{content.faq.map((item) => <details key={item._key || item.question}><summary>{item.question}<ChevronDown size={19} /></summary><p>{item.answer}</p></details>)}</div></div></section>
 
-      <section className="final-section"><div className="container"><CirclePlay className="play-icon" size={34} /><h2>{content.finalCta.title}</h2><p>{content.finalCta.text}</p><a href={link} target="_blank" rel="noreferrer" className="button button-acid">{content.finalCta.button}<ArrowUpRight size={19} /></a></div></section>
+      <section className="final-cta"><div className="shell"><RouteLine /><p className="section-kicker">LANDUS / CADA VISITA, CON DIRECCIÓN</p><h2>{content.finalCta.title}</h2><p>{content.finalCta.text}</p><a className="button primary" href={content.contactUrl} target="_blank" rel="noreferrer">{content.finalCta.button}<ArrowRight size={18} /></a></div></section>
 
-      <footer className="footer container"><a href="#inicio" className="brand"><BrandMark /><span>{content.brand}</span></a><p>Landing pages personalizadas para emprendimientos y negocios en crecimiento.</p><a href={link} target="_blank" rel="noreferrer">@landus.solu <ArrowUpRight size={15} /></a></footer>
+      <footer className="footer shell"><a className="brand" href="#inicio"><BrandMark /><span>Land<span>Us</span></span></a><p>Landing pages diseñadas alrededor de una acción.</p><a href={content.contactUrl} target="_blank" rel="noreferrer">Instagram <ArrowUpRight size={15} /></a></footer>
     </main>
   )
 }
 
 export default App
-

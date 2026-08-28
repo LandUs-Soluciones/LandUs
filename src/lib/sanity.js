@@ -7,10 +7,13 @@ const client = createClient({projectId, dataset, apiVersion: '2026-08-28', useCd
 
 const query = `*[_type == "landingPage" && _id == "landusLanding"][0]{
   brand,
+  contactUrl,
   hero,
-  services[]{_key, number, title, text},
-  process[]{_key, step, title, text},
-  team[]{_key, name, role},
+  problem,
+  route[]{_key, number, label, title, text},
+  caseStudy,
+  offer[]{_key, number, title, text},
+  faq[]{_key, question, answer},
   finalCta
 }`
 

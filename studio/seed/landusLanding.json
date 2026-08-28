@@ -2,27 +2,28 @@
   "_id": "landusLanding",
   "_type": "landingPage",
   "brand": "LandUs",
-  "hero": {
-    "eyebrow": "Estudio digital para marcas en movimiento",
-    "title": "Una presencia web que hace que tu negocio se sienta",
-    "accent": "imposible de ignorar.",
-    "description": "Creamos landing pages estratégicas y hechas a medida para emprendimientos y negocios que necesitan convertir una buena primera impresión en oportunidades reales.",
-    "primaryCta": "Conversemos sobre tu marca",
-    "secondaryCta": "Ver cómo trabajamos"
-  },
-  "services": [
-    {"_key":"service1","number":"01","title":"Estrategia de conversión","text":"Definimos qué necesita entender tu cliente y ordenamos el mensaje antes de diseñar."},
-    {"_key":"service2","number":"02","title":"Diseño con identidad","text":"Una interfaz pensada para que la personalidad de tu marca se vea y se recuerde."},
-    {"_key":"service3","number":"03","title":"Desarrollo y publicación","text":"Una web rápida, adaptable a cualquier pantalla y lista para recibir visitas."}
+  "contactUrl": "https://www.instagram.com/landus.solu/",
+  "hero": {"eyebrow":"LANDING PAGES PARA NEGOCIOS","title":"Tu anuncio consiguió el clic.","accent":"Ahora haz que avance.","description":"Diseñamos landing pages con una sola dirección: llevar a quien te visita hacia una acción concreta.","primaryCta":"Quiero mi landing","secondaryCta":"Conoce la Ruta LandUs"},
+  "problem": {"eyebrow":"DESPUÉS DEL CLIC","title":"El tráfico llega. La pregunta es: ¿qué pasa después?","text":"Una buena landing elimina dudas, explica la oferta y le da a cada visita un siguiente paso claro."},
+  "route": [
+    {"_key":"visit","number":"01","label":"VISITA","title":"Llega desde tu campaña","text":"Un anuncio, un enlace o una búsqueda trae a la persona correcta."},
+    {"_key":"interest","number":"02","label":"INTERÉS","title":"Entiende por qué elegirte","text":"La oferta, la prueba y el mensaje aparecen en el orden correcto."},
+    {"_key":"action","number":"03","label":"ACCIÓN","title":"Da el siguiente paso","text":"WhatsApp, reserva, cotización o compra: una acción visible y simple."},
+    {"_key":"client","number":"04","label":"CLIENTE","title":"Se convierte en oportunidad","text":"Tu página deja de ser una vitrina y empieza a trabajar para tu negocio."}
   ],
-  "process": [
-    {"_key":"process1","step":"01","title":"Entendemos","text":"Conocemos tu negocio, objetivo y cliente ideal."},
-    {"_key":"process2","step":"02","title":"Construimos","text":"Diseñamos y desarrollamos una experiencia a tu medida."},
-    {"_key":"process3","step":"03","title":"Lanzamos","text":"Publicamos, medimos y dejamos tu página lista para crecer."}
+  "caseStudy": {"eyebrow":"UN CASO, UNA ACCIÓN","title":"Para una clínica dental, la meta no es “más visitas”.","accent":"Es conseguir más evaluaciones.","text":"La landing organiza tratamiento, confianza y prueba social para que el clic termine en una conversación por WhatsApp.","client":"CLÍNICA DENTAL","objective":"CONSEGUIR CITAS","action":"RESERVAR POR WHATSAPP"},
+  "offer": [
+    {"_key":"strategy","number":"01","title":"Estrategia","text":"Definimos qué debe hacer la página y para quién."},
+    {"_key":"copy","number":"02","title":"Copy","text":"Ordenamos tu oferta para que se entienda rápido."},
+    {"_key":"design","number":"03","title":"Diseño","text":"Creamos una interfaz con carácter y foco."},
+    {"_key":"development","number":"04","title":"Desarrollo","text":"La hacemos rápida, responsive y fácil de usar."},
+    {"_key":"integrations","number":"05","title":"Integraciones","text":"Conectamos WhatsApp, formularios y analítica."},
+    {"_key":"launch","number":"06","title":"Publicación","text":"La ponemos online lista para recibir tráfico."}
   ],
-  "team": [
-    {"_key":"team1","name":"Jose Pereda","role":"Estrategia y desarrollo"},
-    {"_key":"team2","name":"Renzo Ccente","role":"Diseño y experiencia"}
+  "faq": [
+    {"_key":"faq1","question":"¿Sirve si todavía no tengo una marca grande?","answer":"Sí. Una landing ordena tu propuesta y te ayuda a verte claro y confiable desde la primera visita."},
+    {"_key":"faq2","question":"¿Pueden conectarla con WhatsApp o un formulario?","answer":"Sí. Definimos la acción principal y conectamos los canales necesarios para que el contacto llegue a tu negocio."},
+    {"_key":"faq3","question":"¿La página será editable?","answer":"Sí. Dejamos el contenido clave en un CMS simple para que puedas actualizar textos, casos y llamados a la acción."}
   ],
-  "finalCta": {"title":"Tu negocio ya tiene algo valioso. Hagamos que se note.","text":"Cuéntanos qué estás construyendo y veamos si LandUs es el equipo correcto para llevarlo a la web.","button":"Escríbenos por Instagram"}
+  "finalCta": {"title":"Haz que tu próxima visita avance.","text":"Cuéntanos qué acción necesita conseguir tu negocio y diseñemos el camino para llegar a ella.","button":"Conversemos sobre tu landing"}
 }
