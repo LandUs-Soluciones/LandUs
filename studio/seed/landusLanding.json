@@ -1,0 +1,28 @@
+{
+  "_id": "landusLanding",
+  "_type": "landingPage",
+  "brand": "LandUs",
+  "hero": {
+    "eyebrow": "Estudio digital para marcas en movimiento",
+    "title": "Una presencia web que hace que tu negocio se sienta",
+    "accent": "imposible de ignorar.",
+    "description": "Creamos landing pages estratégicas y hechas a medida para emprendimientos y negocios que necesitan convertir una buena primera impresión en oportunidades reales.",
+    "primaryCta": "Conversemos sobre tu marca",
+    "secondaryCta": "Ver cómo trabajamos"
+  },
+  "services": [
+    {"_key":"service1","number":"01","title":"Estrategia de conversión","text":"Definimos qué necesita entender tu cliente y ordenamos el mensaje antes de diseñar."},
+    {"_key":"service2","number":"02","title":"Diseño con identidad","text":"Una interfaz pensada para que la personalidad de tu marca se vea y se recuerde."},
+    {"_key":"service3","number":"03","title":"Desarrollo y publicación","text":"Una web rápida, adaptable a cualquier pantalla y lista para recibir visitas."}
+  ],
+  "process": [
+    {"_key":"process1","step":"01","title":"Entendemos","text":"Conocemos tu negocio, objetivo y cliente ideal."},
+    {"_key":"process2","step":"02","title":"Construimos","text":"Diseñamos y desarrollamos una experiencia a tu medida."},
+    {"_key":"process3","step":"03","title":"Lanzamos","text":"Publicamos, medimos y dejamos tu página lista para crecer."}
+  ],
+  "team": [
+    {"_key":"team1","name":"Jose Pereda","role":"Estrategia y desarrollo"},
+    {"_key":"team2","name":"Renzo Ccente","role":"Diseño y experiencia"}
+  ],
+  "finalCta": {"title":"Tu negocio ya tiene algo valioso. Hagamos que se note.","text":"Cuéntanos qué estás construyendo y veamos si LandUs es el equipo correcto para llevarlo a la web.","button":"Escríbenos por Instagram"}
+}
